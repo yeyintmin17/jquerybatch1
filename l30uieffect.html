@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>L30 UI effect & show / hide / toggle Method</title>
+        <link href="./libs/jquery-ui-1.13.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+        <style type="text/css">
+            body{
+                height: 100vh;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container{
+                width: 1200px;
+                background-color: #f4f4f4;
+                padding: 20px;
+
+                display: flex;
+            }
+
+            .box{
+                width: 100px;
+                height: 100px;
+
+                margin: 0 10px;
+            }
+
+            .square1, .square7, .square13{
+                background-color: green;
+            }
+
+            .square2, .square8{
+                background-color: orange;
+            }
+
+            .square3, .square9{
+                background-color: blue;
+            }
+
+            .square4, .square10{
+                background-color: violet;
+            }
+
+            .square5, .square11{
+                background-color: brown;
+            }
+
+            .square6, .square12{
+                background-color: steelblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box square1">1</div>
+            <div class="box square2">2</div>
+            <div class="box square3">3</div>
+            <div class="box square4">4</div>
+            <div class="box square5">5</div>
+            <div class="box square6">6</div>
+            <div class="box square7">7</div>
+            <div class="box square8">8</div>
+            <div class="box square9">9</div>
+            <div class="box square10">10</div>
+            <div class="box square11">11</div>
+            <div class="box square12">12</div>
+            <div class="box square13">13</div>
+        </div>
+
+        <div class="control">
+            <button type="button" id="shakebtn">Shake</button>
+            <button type="button" id="bouncebtn">Bounce</button>
+            <button type="button" id="blindbtn">Blind</button>
+            <button type="button" id="clipbtn">Clip</button>
+            <button type="button" id="dropbtn">Drop</button>
+            <button type="button" id="explodebtn">Explode</button>
+            <button type="button" id="fadebtn">Fade</button>
+            <button type="button" id="foldbtn">Fold</button>
+            <button type="button" id="highlightbtn">Highlight</button>
+            <button type="button" id="puffbtn">Puff</button>
+            <button type="button" id="pulsatebtn">Pulsate</button>
+            <button type="button" id="sizebtn">Size</button>
+            <button type="button" id="slidebtn">Slide</button>
+        </div>
+
+        <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <script src="./libs/jquery-ui-1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // console.log("hi");
+
+                // effect()
+                // selector.effect(effecttype,speed);
+                // selector.effect(effecttype,{param},speed);
+
+                // $(".square1,.square2,.square3,.square4,.square5,.square6,.square7,.square8,.square9,.square10,.square11,.square12,.square13").hide();
+
+                $("#shakebtn").click(function(){
+                    // $(".square1").effect("shake",1000);
+                    // $(".square1").effect("shake",8000);
+                    // $(".square1").effect("shake","slow");
+
+                    // $(".square1").effect("shake",{
+                    //     // direction: "left",
+                    //     // direction: "right",
+                    //     // direction: "up",
+                    //     direction: "down",
+                    //     times:2,
+                    //     distance:200,
+                    // },5000);
+
+                    // $(".square1").hide("shake",{
+                    //     direction: "up",
+                    //     times: 2,
+                    //     distance: 250,
+                    // },4000);
+
+                    // $(".square1").show("shake",{
+                    //     direction: "up",
+                    //     times: 2,
+                    //     distance: 300,
+                    // },4000);
+
+                    $(".square1").toggle("shake",{
+                        direction: "up",
+                        times: 2,
+                        distance: 300,
+                    },4000);
+                });
+
+                $("#bouncebtn").click(function(){
+                    // $(".square2").effect("bounce",2000);
+                    // $(".square2").effect("bounce","fast");
+                    // $(".square2").effect("bounce","slow");
+
+                    // $(".square2").effect("bounce",{
+                    //     // direction: "left",
+                    //     // direction: "right",
+                    //     // direction: "up",
+                    //     direction: "down",
+                    //     times:2,
+                    //     distance:200,
+                    // },5000);
+
+                    // $(".square2").hide("bounce",2000);
+
+                    // $(".square2").show("bounce",{
+                    //     direction: "down",
+                    //     times: 2,
+                    //     distance: 200,
+                    // },2000);
+
+                    $(".square2").toggle("bounce",{
+                        direction: "down",
+                        times: 2,
+                        distance: 2000
+                    },2000);
+                });
+
+                $("#blindbtn").click(function(){
+                    // $(".square3").effect("blind",1000);
+
+                    // $(".square3").effect("blind",{
+                    //     // direction: "left",
+                    //     // direction: "right",
+                    //     // direction: "up", // default
+                    //     direction: "down",
+                    // },1000);
+
+                    // $(".square3").hide("blind",3000);
+
+                    // $(".square3").show("blind",{
+                    //     direction: "left"
+                    // },3000)
+
+                    $(".square3").toggle("blind",{
+                        direction: "down"
+                    },3000);
+                });
+
+                $("#clipbtn").click(function(){
+                    // $(".square4").effect("clip",1000);
+
+                    // $(".square4").effect("clip","fast");
+                    
+                    // $(".square4").effect("clip","slow");
+
+                    // $(".square4").hide("clip",3000);
+
+                    // $(".square4").show("clip",3000);
+
+                    $(".square4").toggle("clip",4000);
+                });
+
+                $("#dropbtn").click(function(){
+                    // $(".square5").effect("drop",1000);
+
+                    // $(".square5").effect("drop",{
+                    //     // direction: "left", // default
+                    //     // direction: "right",
+                    //     // direction: "up", 
+                    //     direction: "down",
+                    //     distance: 1000
+                    // },1000);
+
+                    // $(".square5").hide("drop",2000);
+
+                    // $(".square5").show("drop",{
+                    //     direction: "right",
+                    //     distance: 300
+                    // },3000);
+
+                    $(".square5").toggle("drop",{
+                        direction: "right",
+                        distance: 300
+                    },3000);
+                });
+
+                $("#explodebtn").click(function(){
+                    // $(".square6").effect("explode",1000);
+
+                    // $(".square6").effect("explode","fast");
+
+                    // $(".square6").effect("explode","slow");
+
+                    // $(".square6").hide("explode",2000);
+
+                    // $(".square6").show("explode",3000);
+
+                    $(".square6").toggle("explode",3000);
+                });
+
+                $("#fadebtn").click(function(){
+                    // $(".square7").effect("fade",1000);
+
+                    // $(".square7").effect("fade","fast");
+
+                    // $(".square7").effect("fade","slow");
+
+                    // $(".square7").hide("fade",2000);
+
+                    // $(".square7").show("fade",3000);
+
+                    $(".square7").toggle("fade",3000);
+                });
+
+                $("#foldbtn").click(function(){
+                    // $(".square8").effect("fold",1000);
+
+                    // $(".square8").effect("fold","fast");
+
+                    // $(".square8").effect("fold","slow");
+
+                    // $(".square8").hide("fold","slow");
+
+                    // $(".square8").show("fold", 3000);
+
+                    $(".square8").toggle("fold",3000);
+                });
+
+                $("#highlightbtn").click(function(){
+                    // $(".square9").effect("highlight",1000);
+
+                    // $(".square9").effect("highlight",{
+                    //     // color: "red",
+                    //     color: "cyan",
+                    // },3000);
+
+                    // $(".square9").hide("highlight",2000);
+
+                    // $(".square9").show("highlight",3000);
+
+                    $(".square9").toggle("highlight",3000);
+                });
+
+                $("#puffbtn").click(function(){
+                    // $(".square10").effect("puff",1000);
+
+                    // $(".square10").effect("puff","fast");
+
+                    // $(".square10").effect("puff","slow");
+                   
+                    // $(".square10").hide("puff",2000);
+
+                    // $(".square10").show("puff",2000);
+
+                    $(".square10").toggle("puff",2000);
+                });
+
+                $("#pulsatebtn").click(function(){
+                    // $(".square11").effect("pulsate",5000);
+
+                    // $(".square11").effect("pulsate",{
+                    //     times: 3
+                    // },5000);
+
+                    // $(".square11").hide("pulsate",{
+                    //     times: 2
+                    // },5000);
+
+                    // $(".square11").show("pulsate",{
+                    //     times: 2
+                    // },5000);
+
+                    $(".square11").toggle("pulsate",{
+                        times: 2
+                    },5000);
+                });
+
+                $("#sizebtn").click(function(){
+                    // $(".square12").effect("size",1000);
+
+                    // $(".square12").effect("size","fast");
+
+                    // $(".square12").effect("size","slow");
+
+                    // $(".square12").hide("size",2000);
+
+                    // $(".square12").show("size",2000);
+
+                    $(".square12").toggle("size",2000);
+                });
+
+                $("#slidebtn").click(function(){
+                    // $(".square13").effect("slide",1000);
+
+                    // $(".square13").effect("slide",{
+                    //     // direction: "left", // default
+                    //     // direction: "right",
+                    //     direction: "up", 
+                    //     // direction: "down",
+                    //     distance: 1000,
+                    // },2000);
+
+                    // $(".square13").hide("slide",2000);
+
+                    // $(".square13").show("slide",2000);
+
+                    $(".square13").toggle("slide",{
+                        direction: "down",
+                        distance: 200,
+                    },3000);
+                });
+            });
+        </script>
+    </body>
+</html>
