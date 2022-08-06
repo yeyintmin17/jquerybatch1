@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>L62 Input Files Preview</title>
+        <style type="text/css">
+            *{
+                box-sizing: border-box;
+            }
+
+            body{
+                height: 100vh;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container{
+                width: 800px;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+
+            form{
+                margin: 20px;
+            }
+
+            .form-group label{
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .form-control{
+                width: 100%;
+            }
+
+            .justify-content-end{
+                display: flex;
+                justify-content: end;
+            }
+
+            .gallery{
+                width: 100%;
+                background-color: #eee;
+                color: #aaa;
+                text-align: center;
+                padding: 10px;
+                margin: auto;
+            }
+
+            .gallery img{
+                width: 100px;
+                height: 100px;
+                border: 2px dashed #aaa;
+                border-radius: 10px;
+                object-fit: cover;
+
+                padding: 5px;
+                margin: 0 5px;
+            }
+
+            .removetxt span{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form action="" method="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="coverphotos">Cover Photo</label>
+                    <input type="file" name="coverphotos[]" id="coverphotos" class="form-control" multiple/>
+
+                    <div class="justify-content-end">
+                        <button type="button" class="btn">Upload</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="gallery">
+                <span>Choose Images</span>
+            </div>
+        </div>
+
+        <script src="./libs/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // console.log("hi");
+
+                var peviewimages = function(input,output){
+                    // console.log(input,output);
+
+                    if(input.files){
+                        // console.log(input.files);
+
+                        var tootalfiles = input.files.length;
+                        // console.log(tootalfiles);
+
+                        if(tootalfiles > 0){
+                            $(".gallery").addClass("removetxt");
+                        }else{
+                            $(".gallery").removeClass("removetxt");
+                        }
+
+                        for(var i=0; i < tootalfiles; i++){
+                            var filereader = new FileReader();
+                            // console.log(filereader);
+
+                            filereader.onload = function(e){
+                                // console.log(e.target.result);
+                                $($.parseHTML("<img/>")).attr("src",e.target.result).appendTo(output);
+                            }
+
+                            filereader.readAsDataURL(input.files[i]);
+                        }
+                    }
+                };
+
+                $("#coverphotos").change(function(){
+                    peviewimages(this,'.gallery');
+                });
+            });
+        </script>
+    </body>
+</html>
